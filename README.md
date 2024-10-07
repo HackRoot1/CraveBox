@@ -12,3 +12,5 @@
 5. php artisan key:generate
 6. php artisan migrate (if necessory)
 7. php artisan serve (for running project)
+
+## Steps to follow when doing a task:
