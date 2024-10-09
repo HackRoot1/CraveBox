@@ -18,7 +18,7 @@
 1. git fetch origin
 2. git status
 3. git pull (if required)
-4. git checkout <BranchName> (BranchName: which task is you are doing)
+4. git checkout BranchName (BranchName: which task is you are doing)
 5. do your work
 6. git add .
 7. git commit -m "Your meaningful message"
