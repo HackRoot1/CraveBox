@@ -10,7 +10,7 @@
    ```
    - Replace `<repository-url>` with the URL of the repository you're cloning.
   
-**Example:**
+    **Example:**
    ```bash
    git clone https://github.com/HackRoot1/e-commerce.git
    ```
@@ -78,7 +78,7 @@
    ```
    - Replace `BranchName` with the actual name of the branch where you will perform your task.
 
-**Example:**
+    **Example:**
    ```bash
    git checkout 1-create-a-login-page
    ```
