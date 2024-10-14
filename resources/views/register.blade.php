@@ -23,36 +23,60 @@
 
     <section class="h-main bg-danger">
         <div class="d-flex justify-content-center align-items-center h-100">
-            <form class="bg-light px-4 py-3 rounded-3 d-flex flex-column gap-2">
+            <form class="bg-light px-4 py-3 rounded-3 d-flex flex-column gap-2" method="POST" action="{{ route('register.data') }}"> 
+                @csrf
                 <div class="d-flex flex-row gap-3">
                     <div>
                         <label for="firstName" class="form-label">First Name</label>
-                        <input type="text" class="form-control" id="firstName">
+                        <input type="text" name="fname" class="form-control" id="firstName">
+                        {{-- maybe asach ahe saglya fields la karav lagel name change karun kar tu to paryant mi bghto correct ahe ka --}}
+                        @error('fname')
+                            {{ $message }}
+                        @enderror
                     </div>
                     <div>
                         <label for="lastName" class="form-label">Last Name</label>
-                        <input type="text" class="form-control" id="lastName">
+                        <input type="text" name="lname" class="form-control" id="lastName">
+                        @error('lname')
+                        {{ $message }}
+                    @enderror
                     </div>
+                </div>
+
+                <div>
+                    <label for="email" class="form-label">Email address</label>
+                    <input type="email" name="email" class="form-control" id="email">
+                    @error('email')
+                    {{ $message }}
+                @enderror
                 </div>
                 <div>
                     <label for="contact_no" class="form-label">Contact No</label>
-                    <input type="phone" class="form-control" id="contact_no">
-                </div>
-                <div>
-                    <label for="email" class="form-label">Email address</label>
-                    <input type="email" class="form-control" id="email">
+                    <input type="phone" name="phone" class="form-control" id="contact_no">
+                    @error('phone')
+                    {{ $message }}
+                @enderror
                 </div>
                 <div>
                     <label for="username" class="form-label">Username</label>
-                    <input type="text" class="form-control" id="username">
+                    <input type="text" name="username" class="form-control" id="username">
+                    @error('username')
+                    {{ $message }}
+                @enderror
                 </div>
                 <div>
                     <label for="password" class="form-label">Password</label>
-                    <input type="password" class="form-control" id="password">
+                    <input type="password" name="password" class="form-control" id="password">
+                    @error('password')
+                    {{ $message }}
+                @enderror
                 </div>
                 <div>
-                    <label for="confirm_password" class="form-label">Confirm Password</label>
-                    <input type="password" class="form-control" id="confirm_password">
+                    <label for="password_confirmation" class="form-label">Confirm Password</label>
+                    <input type="password" name="password_confirmation" class="form-control" id="password_confirmation">
+                    @error('password_confirmation')
+                        {{ $message }}
+                    @enderror 
                 </div>
                 <div class="form-check d-flex justify-content-between">
                     <div>
