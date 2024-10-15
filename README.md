@@ -1,7 +1,9 @@
 ## Requirements
 
-1. PHP 8.2.x 
+1. PHP 8.2.x
 
+### Laravel Reference Cheatsheet: 
+https://quickref.me/laravel
 
 ### **Project Setup**
 1. **Clone the repository:**
