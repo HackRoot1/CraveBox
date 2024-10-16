@@ -46,15 +46,22 @@
 
     <section class="h-main bg-danger">
         <div class="d-flex justify-content-center align-items-center h-100 w-100 ">
-            <form class="bg-light px-4 py-3 rounded-3 d-flex flex-column gap-4">
+            <form class="bg-light px-4 py-3 rounded-3 d-flex flex-column gap-4" method="POST" action="{{ route('login.page')}}">
+                @csrf
                 <h2 class="text-center">Login</h2>
                 <div>
                     <label for="username" class="form-label">Username</label>
-                    <input type="text" class="form-control" id="username">
+                    <input type="text" name="username" class="form-control" id="username">
+                    @error('username')
+                        {{$message}}
+                    @enderror
                 </div>
                 <div>
                     <label for="password" class="form-label">Password</label>
-                    <input type="password" class="form-control" id="password">
+                    <input type="password" name="password" class="form-control" id="password">
+                    @error('password')
+                        {{$message}}
+                    @enderror
                 </div>
                 <div class="form-check d-flex justify-content-between">
                     <div>
