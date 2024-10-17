@@ -11,7 +11,7 @@ Route::get('/login', function () {
 })->name('login');
 
 Route::post('/register-data', [RegisterController::class, 'Store'])->name('register.data');
-Route::post('/login', [RegisterController::class,'view'])->name('login.page');
+Route::post('/login', [RegisterController::class,'authenticate'])->name('login.page');
 
 Route::get('/home', function(){
     return view('home');
