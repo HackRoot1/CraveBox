@@ -1,0 +1,294 @@
+### 1. **users** (For restaurant admin/staff logins)
+This table is used for authentication and authorization of users, such as admins and staff members.
+
+| Column Name     | Data Type       | Constraints                                  |
+|-----------------|-----------------|----------------------------------------------|
+| `id`            | `BIGINT`        | Primary Key, Auto-increment                  |
+| `name`          | `VARCHAR(255)`  | Not Null                                     |
+| `email`         | `VARCHAR(255)`  | Not Null, Unique                             |
+| `password`      | `VARCHAR(255)`  | Not Null                                     |
+| `role`          | `VARCHAR(50)`   | Not Null (e.g., admin, staff)                |
+| `created_at`    | `TIMESTAMP`     | Not Null, Default `CURRENT_TIMESTAMP`        |
+| `updated_at`    | `TIMESTAMP`     | Not Null, Default `CURRENT_TIMESTAMP`        |
+
+
+
+
+
+
+
+
+### 2. Table Structure: `roles`
+
+| Column Name     | Data Type       | Constraints                                  |
+|-----------------|-----------------|----------------------------------------------|
+| `id`            | `BIGINT`        | Primary Key, Auto-increment                  |
+| `name`          | `VARCHAR(50)`   | Not Null, Unique (e.g., admin, staff, cashier)|
+| `description`   | `TEXT`          | Nullable                                     |
+| `created_at`    | `TIMESTAMP`     | Not Null, Default `CURRENT_TIMESTAMP`        |
+| `updated_at`    | `TIMESTAMP`     | Not Null, Default `CURRENT_TIMESTAMP`        |
+
+### Example Data (Dummy Rows)
+
+| `id` | `name`   | `description`               | `created_at`          | `updated_at`          |
+|------|----------|-----------------------------|-----------------------|-----------------------|
+| 1    | Admin    | "Full access to the system"  | 2024-10-18 10:00:00   | 2024-10-18 10:00:00   |
+| 2    | Staff    | "Limited access for staff"   | 2024-10-18 10:00:00   | 2024-10-18 10:00:00   |
+
+
+
+
+
+
+### 3. Table Structure: `role_user`
+
+| Column Name     | Data Type       | Constraints                                  |
+|-----------------|-----------------|----------------------------------------------|
+| `id`            | `BIGINT`        | Primary Key, Auto-increment                  |
+| `user_id`       | `BIGINT`        | Foreign Key referencing `users(id)`          |
+| `role_id`       | `BIGINT`        | Foreign Key referencing `roles(id)`          |
+
+
+### Example Data (Dummy Rows)
+
+| `id` | `user_id` | `role_id` |
+|------|-----------|-----------|
+| 1    | 1         | 1         |   <!-- User 1 is Admin -->
+| 2    | 2         | 2         |   <!-- User 2 is Staff -->
+
+
+
+
+
+
+
+
+
+
+
+### 3. **foods** (For storing the menu items)
+This table will store the list of food items offered by the restaurant.
+
+| Column Name     | Data Type       | Constraints                                  |
+|-----------------|-----------------|----------------------------------------------|
+| `id`            | `BIGINT`        | Primary Key, Auto-increment                  |
+| `name`          | `VARCHAR(255)`  | Not Null                                     |
+| `description`   | `TEXT`          | Nullable                                     |
+| `price`         | `DECIMAL(8,2)`  | Not Null, with precision 8 and 2 decimals    |
+| `category`      | `VARCHAR(255)`  | Not Null (e.g., Appetizer, Main Course)      |
+| `ingredient`    | `TEXT`          | Not Null (list of ingredients)               |
+| `image`         | `VARCHAR(255)`  | Nullable (URL or file path)                  |
+| `is_available`  | `BOOLEAN`       | Default true (availability of the item)      |
+| `created_at`    | `TIMESTAMP`     | Not Null, Default `CURRENT_TIMESTAMP`        |
+| `updated_at`    | `TIMESTAMP`     | Not Null, Default `CURRENT_TIMESTAMP`        |
+
+
+### Example Data (Dummy Rows)
+
+| `id` | `name`                | `description`                                   | `price`  | `category`   | `ingredient`                                  | `image`          | `is_available` | `created_at`          | `updated_at`          |
+|------|-----------------------|-------------------------------------------------|----------|--------------|------------------------------------------------|------------------|----------------|-----------------------|-----------------------|
+| 1    | Grilled Chicken Salad | "Fresh greens topped with grilled chicken strips"| 12.99    | Salad        | "Chicken, Lettuce, Tomatoes, Cucumber, Dressing"| salad.jpg        | true           | 2024-10-18 10:15:00   | 2024-10-18 10:15:00   |
+| 2    | Margherita Pizza       | "Classic pizza with fresh basil and mozzarella" | 9.50     | Main Course  | "Flour, Tomato Sauce, Mozzarella, Basil"       | pizza.jpg        | true           | 2024-10-18 10:20:00   | 2024-10-18 10:20:00   |
+
+---
+
+
+
+
+
+### 4. **orders** (For managing customer orders)
+This table will store each order placed by customers, including details of the foods ordered.
+
+| Column Name     | Data Type       | Constraints                                  |
+|-----------------|-----------------|----------------------------------------------|
+| `id`            | `BIGINT`        | Primary Key, Auto-increment                  |
+| `customer_id`   | `BIGINT`        | Foreign Key referencing `customers(id)`      |
+| `total_price`   | `DECIMAL(8,2)`  | Not Null                                     |
+| `status`        | `VARCHAR(50)`   | Not Null (e.g., pending, completed, canceled)|
+| `created_at`    | `TIMESTAMP`     | Not Null, Default `CURRENT_TIMESTAMP`        |
+| `updated_at`    | `TIMESTAMP`     | Not Null, Default `CURRENT_TIMESTAMP`        |
+
+
+### Example Data (Dummy Rows)
+
+| `id` | `customer_id` | `total_price` | `status`   | `created_at`          | `updated_at`          |
+|------|---------------|---------------|------------|-----------------------|-----------------------|
+| 1    | 1             | 22.49         | completed  | 2024-10-18 12:30:00   | 2024-10-18 12:30:00   |
+| 2    | 2             | 15.99         | pending    | 2024-10-18 12:45:00   | 2024-10-18 12:45:00   |
+
+---
+
+
+
+### 5. **order_items** (For storing the foods in each order)
+This table will link foods with orders, allowing a single order to contain multiple food items.
+
+| Column Name     | Data Type       | Constraints                                  |
+|-----------------|-----------------|----------------------------------------------|
+| `id`            | `BIGINT`        | Primary Key, Auto-increment                  |
+| `order_id`      | `BIGINT`        | Foreign Key referencing `orders(id)`         |
+| `food_id`       | `BIGINT`        | Foreign Key referencing `foods(id)`          |
+| `quantity`      | `INTEGER`       | Not Null                                     |
+| `price`         | `DECIMAL(8,2)`  | Not Null                                     |
+
+
+### Example Data (Dummy Rows)
+
+| `id` | `order_id` | `food_id` | `quantity` | `price` |
+|------|------------|-----------|------------|---------|
+| 1    | 1          | 1         | 1          | 12.99   |
+| 2    | 1          | 2         | 1          | 9.50    |
+| 3    | 2          | 2         | 1          | 9.50    |
+
+---
+
+
+
+
+### 6. **customers** (For managing customer information)
+This table will store customer details such as name and contact information.
+
+| Column Name     | Data Type       | Constraints                                  |
+|-----------------|-----------------|----------------------------------------------|
+| `id`            | `BIGINT`        | Primary Key, Auto-increment                  |
+| `name`          | `VARCHAR(255)`  | Not Null                                     |
+| `email`         | `VARCHAR(255)`  | Not Null, Unique                             |
+| `phone`         | `VARCHAR(20)`   | Nullable                                     |
+| `created_at`    | `TIMESTAMP`     | Not Null, Default `CURRENT_TIMESTAMP`        |
+| `updated_at`    | `TIMESTAMP`     | Not Null, Default `CURRENT_TIMESTAMP`        |
+
+
+### Example Data (Dummy Rows)
+
+| `id` | `name`        | `email`                 | `phone`         | `created_at`          | `updated_at`          |
+|------|---------------|-------------------------|-----------------|-----------------------|-----------------------|
+| 1    | John Doe      | john.doe@example.com     | 123-456-7890    | 2024-10-18 10:00:00   | 2024-10-18 10:00:00   |
+| 2    | Jane Smith    | jane.smith@example.com   | 987-654-3210    | 2024-10-18 10:15:00   | 2024-10-18 10:15:00   |
+
+---
+
+
+
+
+
+### 7. **reservations** (For managing table reservations)
+This table will store information about table bookings.
+
+| Column Name     | Data Type       | Constraints                                  |
+|-----------------|-----------------|----------------------------------------------|
+| `id`            | `BIGINT`        | Primary Key, Auto-increment                  |
+| `customer_id`   | `BIGINT`        | Foreign Key referencing `customers(id)`      |
+| `reservation_time` | `DATETIME`   | Not Null                                     |
+| `number_of_people` | `INTEGER`    | Not Null                                     |
+| `status`        | `VARCHAR(50)`   | Not Null (e.g., pending, confirmed, canceled)|
+| `created_at`    | `TIMESTAMP`     | Not Null, Default `CURRENT_TIMESTAMP`        |
+| `updated_at`    | `TIMESTAMP`     | Not Null, Default `CURRENT_TIMESTAMP`        |
+
+
+### Example Data (Dummy Rows)
+
+| `id` | `customer_id` | `reservation_time`    | `number_of_people` | `status`   | `created_at`          | `updated_at`          |
+|------|---------------|-----------------------|--------------------|------------|-----------------------|-----------------------|
+| 1    | 1             | 2024-10-20 18:00:00   | 4                  | confirmed  | 2024-10-18 12:00:00   | 2024-10-18 12:00:00   |
+| 2    | 2             | 2024-10-21 19:00:00   | 2                  | pending    | 2024-10-18 12:30:00   | 2024-10-18 12:30:00   |
+
+---
+
+
+
+
+
+
+
+
+
+
+
+
+### 8. **categories** (For categorizing foods)
+This table will store different food categories like Appetizers, Main Courses, Desserts, etc.
+
+| Column Name     | Data Type       | Constraints                                  |
+|-----------------|-----------------|----------------------------------------------|
+| `id`            | `BIGINT`        | Primary Key, Auto-increment                  |
+| `name`          | `VARCHAR(255)`  | Not Null, Unique                             |
+| `created_at`    | `TIMESTAMP`     | Not Null, Default `CURRENT_TIMESTAMP`        |
+| `updated_at`    | `TIMESTAMP`     | Not Null, Default `CURRENT_TIMESTAMP`        |
+
+
+### Example Data (Dummy Rows)
+
+| `id` | `name`           | `created_at`          | `updated_at`          |
+|------|------------------|-----------------------|-----------------------|
+| 1    | Appetizer        | 2024-10-18 10:00:00   | 2024-10-18 10:00:00   |
+| 2    | Main Course      | 2024-10-18 10:15:00   | 2024-10-18 10:15:00   |
+| 3    | Dessert          | 2024-10-18 10:30:00   | 2024-10-18 10:30:00   |
+| 4    | Beverage         | 2024-10-18 10:45:00   | 2024-10-18 10:45:00   |
+
+
+
+
+
+### 9. Table Structure: `payments`
+
+| Column Name      | Data Type       | Constraints                                   |
+|------------------|-----------------|-----------------------------------------------|
+| `id`             | `BIGINT`        | Primary Key, Auto-increment                   |
+| `order_id`       | `BIGINT`        | Foreign Key referencing `orders(id)`          |
+| `amount`         | `DECIMAL(8,2)`  | Not Null                                      |
+| `payment_method` | `VARCHAR(50)`   | Not Null (e.g., credit card, cash, online)    |
+| `payment_status` | `VARCHAR(50)`   | Not Null (e.g., pending, completed, failed)   |
+| `transaction_id` | `VARCHAR(100)`  | Nullable (for storing external transaction IDs)|
+| `payment_date`   | `TIMESTAMP`     | Not Null, Default `CURRENT_TIMESTAMP`         |
+| `created_at`     | `TIMESTAMP`     | Not Null, Default `CURRENT_TIMESTAMP`         |
+| `updated_at`     | `TIMESTAMP`     | Not Null, Default `CURRENT_TIMESTAMP`         |
+
+### Example Data (Dummy Row)
+
+| `id` | `order_id` | `amount` | `payment_method` | `payment_status` | `transaction_id`    | `payment_date`        | `created_at`          | `updated_at`          |
+|------|------------|----------|------------------|------------------|---------------------|-----------------------|-----------------------|-----------------------|
+| 1    | 1          | 22.49    | Credit Card      | Completed        | trx12345abc         | 2024-10-18 12:35:00   | 2024-10-18 12:35:00   | 2024-10-18 12:35:00   |
+| 2    | 2          | 15.99    | Cash             | Pending          | null                | 2024-10-18 12:45:00   | 2024-10-18 12:45:00   | 2024-10-18 12:45:00   |
+
+
+
+
+
+
+### 10. **testimonials** (For managing customer testimonials/reviews)
+This table will store customer reviews or testimonials about the restaurant.
+
+| Column Name     | Data Type       | Constraints                                  |
+|-----------------|-----------------|----------------------------------------------|
+| `id`            | `BIGINT`        | Primary Key, Auto-increment                  |
+| `customer_name` | `VARCHAR(255)`  | Not Null                                     |
+| `customer_email`| `VARCHAR(255)`  | Nullable                                     |
+| `testimonial`   | `TEXT`          | Not Null                                     |
+| `rating`        | `INTEGER`       | Unsigned, Default 0                          |
+| `photo`         | `VARCHAR(255)`  | Nullable                                     |
+| `approved_at`   | `TIMESTAMP`     | Nullable                                     |
+| `created_at`    | `TIMESTAMP`     | Not Null, Default `CURRENT_TIMESTAMP`        |
+| `updated_at`    | `TIMESTAMP`     | Not Null, Default `CURRENT_TIMESTAMP`        |
+
+
+
+### Example Data (Dummy Rows)
+
+| `id` | `customer_name` | `customer_email`       | `testimonial`                                                                                     | `rating` | `photo`          | `approved_at`       | `created_at`          | `updated_at`          |
+|------|-----------------|------------------------|---------------------------------------------------------------------------------------------------|----------|------------------|---------------------|-----------------------|-----------------------|
+| 1    | John Doe        | john.doe@example.com    | "Amazing food and excellent service! I’ll definitely visit again."                                | 5        | john_photo.jpg    | 2024-10-18 10:30:00 | 2024-10-18 10:15:00   | 2024-10-18 10:15:00   |
+| 2    | Jane Smith      | jane.smith@example.com  | "The ambiance was fantastic, but the wait time was a bit long."                                   | 4        | jane_photo.jpg    | 2024-10-18 11:00:00 | 2024-10-18 10:45:00   | 2024-10-18 10:45:00   |
+
+
+
+
+
+
+---
+
+### Relationships Between Tables:
+1. **foods** and **order_items**: Many-to-Many (a food item can be in multiple orders, and an order can have multiple food items).
+2. **orders** and **customers**: One-to-Many (a customer can have multiple orders).
+3. **reservations** and **customers**: One-to-Many (a customer can make multiple reservations).
+4. **foods** and **categories**: Many-to-One (a food item belongs to one category, but a category can have many food items).
+
