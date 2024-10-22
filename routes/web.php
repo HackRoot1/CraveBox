@@ -16,4 +16,10 @@ Route::post('/login', [RegisterController::class,'authenticate'])->name('login.p
 Route::get('/home', function(){
     return view('home');
 })->name('home');  
-// ata run karun bgh and mg push kar ok jala re mala mahit ahe kiti time lagel ho ata kru ka push h
+
+Route::get('/',function(){
+return view('welcome');
+});
+Route::get('/single-food',function(){
+    return view('single-food');
+    });
