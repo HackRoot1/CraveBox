@@ -1,3 +1,11 @@
+1. checkout page 
+2. food page
+3. shopping cart 
+4. wishlist 
+5. profile 
+itke kar 5 pages ook me pathvalay te bah  me krte ho he termainal bagh kay zalaph
+
+
 ### 1. **users** (For restaurant admin/staff logins)
 This table is used for authentication and authorization of users, such as admins and staff members.
 
