@@ -80,10 +80,10 @@
                         <nav id="mobile-menu">
                             <ul class="main-menu">
                                 <li>
-                                    <a href="#">home</a>
+                                    <a href="{{ route('home') }}">home</a>
                                 </li>
                                 <li><a href="about.html">about us</a></li>
-                                <li><a href="menu.html">menu</a></li>
+                                <li><a href="{{ route('food.page') }}">menu</a></li>
                                 <li>
                                     <a href="#">blog</a>
                                 </li>
