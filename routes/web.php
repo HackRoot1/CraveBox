@@ -3,10 +3,7 @@
 use App\Http\Controllers\RegisterController;
 use Illuminate\Support\Facades\Route;
 
-
-
 // authentications
-
 Route::get('/register', function () {
     return view('register');
 })->name('register');
@@ -15,13 +12,9 @@ Route::get('/login', function () {
     return view('login');
 })->name('login');
 
-Route::post('/register-data', [RegisterController::class, 'Store'])->name('register.data');
+// Post route for registering and logging in
+Route::post('/register-data', [RegisterController::class, 'store'])->name('register.data');
 Route::post('/login', [RegisterController::class, 'authenticate'])->name('login.page');
-
-
-
-
-
 
 // pages 
 Route::get('/', function () {
