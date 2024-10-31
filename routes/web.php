@@ -51,3 +51,6 @@ Route::get('/shopping-cart', function () {
 Route::get('/food-page', function () {
     return view('food-page');
 })->name('food.page');
+Route::fallback(function(){
+    return view('errors.404');
+});
