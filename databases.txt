@@ -90,7 +90,7 @@ This table will store the list of food items offered by the restaurant.
 | `created_at`    | `TIMESTAMP`     | Not Null, Default `CURRENT_TIMESTAMP`        |
 | `updated_at`    | `TIMESTAMP`     | Not Null, Default `CURRENT_TIMESTAMP`        |
 
-
+he sagle columns pahijel bgh hya file made dilet table structures hhe sagle table banvaychet ho pn lagel tevha as ok haa yaat pn changes karave lagtil manun time var karu as ok ata fakt foods cha krayche na haakrte mg >
 ### Example Data (Dummy Rows)
 
 | `id` | `name`                | `description`                                   | `price`  | `category`   | `ingredient`                                  | `image`          | `is_available` | `created_at`          | `updated_at`          |
