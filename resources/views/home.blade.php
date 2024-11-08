@@ -186,94 +186,21 @@
       <div class="row">
         <ul class="nav" id="menuAreaTab" role="tablist">
           <!-- menu-nav-1 -->
+          @foreach ($foods_category as $category) 
           <li class="nav-item" role="presentation">
-            <div class="nav-link active" id="menu1-tab" data-bs-toggle="tab" data-bs-target="#menu1-tab-pane"
+            <div class="nav-link {{  ($category == 'Main Course') ? "active" : "" }}" id="menu1-tab" data-bs-toggle="tab" data-bs-target="#menu1-tab-pane"
               role="tab" aria-controls="menu1-tab-pane" aria-selected="true">
               <div class="single-menu-nav text-center">
                 <div class="menu-img margin-bottom-10">
                   <img src="assets/images/menu-item/pizza.png" alt="" />
                 </div>
-                <h6>pizza</h6>
-                <span class="g-s-4"><img src="assets/images/shapes/10.png" alt="" /></span>
+                <h6>{{$category}}</h6> 
+                <span class="g-s-4"><img src="assets/images/shapes/{{$category}}" alt="" /></span>
                 <span class="g-s-5"><img src="assets/images/shapes/14.png" alt="" /></span>
               </div>
             </div>
           </li>
-
-          <!-- menu-nav-2 -->
-          <li class="nav-item" role="presentation">
-            <div class="nav-link" id="menu2-tab" data-bs-toggle="tab" data-bs-target="#menu2-tab-pane" role="tab"
-              aria-controls="menu2-tab-pane" aria-selected="false">
-              <div class="single-menu-nav text-center">
-                <div class="menu-img margin-bottom-10">
-                  <img src="assets/images/menu-item/burger.png" alt="" />
-                </div>
-                <h6>burger</h6>
-                <span class="g-s-4"><img src="assets/images/shapes/10.png" alt="" /></span>
-                <span class="g-s-5"><img src="assets/images/shapes/14.png" alt="" /></span>
-              </div>
-            </div>
-          </li>
-
-          <!-- menu-nav-3 -->
-          <li class="nav-item" role="presentation">
-            <div class="nav-link" id="menu3-tab" data-bs-toggle="tab" data-bs-target="#menu3-tab-pane" role="tab"
-              aria-controls="menu3-tab-pane" aria-selected="false">
-              <div class="single-menu-nav text-center">
-                <div class="menu-img margin-bottom-10">
-                  <img src="assets/images/menu-item/chicken.png" alt="" />
-                </div>
-                <h6>chicken</h6>
-                <span class="g-s-4"><img src="assets/images/shapes/10.png" alt="" /></span>
-                <span class="g-s-5"><img src="assets/images/shapes/14.png" alt="" /></span>
-              </div>
-            </div>
-          </li>
-
-          <!-- menu-nav-4 -->
-          <li class="nav-item" role="presentation">
-            <div class="nav-link" id="menu4-tab" data-bs-toggle="tab" data-bs-target="#menu4-tab-pane" role="tab"
-              aria-controls="menu4-tab-pane" aria-selected="false">
-              <div class="single-menu-nav text-center">
-                <div class="menu-img margin-bottom-10">
-                  <img src="assets/images/menu-item/drinks.png" alt="" />
-                </div>
-                <h6>drinks</h6>
-                <span class="g-s-4"><img src="assets/images/shapes/10.png" alt="" /></span>
-                <span class="g-s-5"><img src="assets/images/shapes/14.png" alt="" /></span>
-              </div>
-            </div>
-          </li>
-
-          <!-- menu-nav-5 -->
-          <li class="nav-item" role="presentation">
-            <div class="nav-link" id="menu5-tab" data-bs-toggle="tab" data-bs-target="#menu5-tab-pane" role="tab"
-              aria-controls="menu5-tab-pane" aria-selected="false">
-              <div class="single-menu-nav text-center">
-                <div class="menu-img margin-bottom-10">
-                  <img src="assets/images/menu-item/drinks2.png" alt="" />
-                </div>
-                <h6>drinks</h6>
-                <span class="g-s-4"><img src="assets/images/shapes/10.png" alt="" /></span>
-                <span class="g-s-5"><img src="assets/images/shapes/14.png" alt="" /></span>
-              </div>
-            </div>
-          </li>
-
-          <!-- menu-nav-6 -->
-          <li class="nav-item" role="presentation">
-            <div class="nav-link" id="menu6-tab" data-bs-toggle="tab" data-bs-target="#menu6-tab-pane" role="tab"
-              aria-controls="menu6-tab-pane" aria-selected="false">
-              <div class="single-menu-nav text-center">
-                <div class="menu-img margin-bottom-10">
-                  <img src="assets/images/menu-item/combo.png" alt="" />
-                </div>
-                <h6>combo menu</h6>
-                <span class="g-s-4"><img src="assets/images/shapes/10.png" alt="" /></span>
-                <span class="g-s-5"><img src="assets/images/shapes/14.png" alt="" /></span>
-              </div>
-            </div>
-          </li>
+          @endforeach
         </ul>
       </div>
     </div>

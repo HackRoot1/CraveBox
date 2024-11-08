@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\FoodsController;
 use App\Http\Controllers\RegisterController;
 use Illuminate\Support\Facades\Route;
 
@@ -18,15 +19,17 @@ Route::get('/login', function () {
 Route::post('/register-data', [RegisterController::class, 'Store'])->name('register.data');
 Route::post('/login', [RegisterController::class, 'authenticate'])->name('login.page');
 
-
+Route::get('/',[FoodsController::class,'foodsCategory'])->name('home'); 
 
 
 
 
 // pages 
-Route::get('/', function () {
-    return view('home');
-})->name('home');
+// ya route ne tar ithe controller cha function call karav lagel pahile tar mg tyat database cha code 
+// ha controller cha function call karav lagel home route call kela tar example ahe yeil na karta ha manej try controller madla function call zala pahijel as jevha ha route run hoil tevha example ahe na
+// Route::get('/', function () {
+//     return view('home');
+// })->name('home');
 
 Route::get('/single-food', function () {
     return view('single-food');
