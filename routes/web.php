@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\FoodsController;
 use App\Http\Controllers\RegisterController;
 use Illuminate\Support\Facades\Route;
 
@@ -16,10 +17,8 @@ Route::get('/login', function () {
 Route::post('/register-data', [RegisterController::class, 'store'])->name('register.data');
 Route::post('/login', [RegisterController::class, 'authenticate'])->name('login.page');
 
-// pages 
-Route::get('/', function () {
-    return view('home');
-})->name('home');
+Route::get('/',[FoodsController::class,'foodsCategory'])->name('home'); 
+
 
 Route::get('/single-food', function () {
     return view('single-food');

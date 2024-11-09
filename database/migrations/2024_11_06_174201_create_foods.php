@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\DB;
 
 return new class extends Migration
 {
@@ -19,7 +20,7 @@ return new class extends Migration
             $table->string('category', 255)->nullable(false);
             $table->text('ingredient')->nullable(false); 
             $table->string('image', 255)->nullable();
-            $table->boolean('is_avilable')->default(true);
+            $table->boolean('is_available')->default(true);
 
             $table->timestamps();
         });
@@ -27,7 +28,7 @@ return new class extends Migration
 
     /**
      * Reverse the migrations.
-     */
+     *///konta kru konta easy vatato bgh to kar 
     public function down(): void
     {
         Schema::dropIfExists('foods');
