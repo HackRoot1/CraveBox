@@ -144,7 +144,6 @@ INSERT INTO foods (name, description, price, category, ingredient, image, is_ava
 
 
 
-
 ### 4. **orders** (For managing customer orders)
 This table will store each order placed by customers, including details of the foods ordered.
 
