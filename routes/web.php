@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\FoodsController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RegisterController;
 use Illuminate\Support\Facades\Route;
 
@@ -28,9 +29,8 @@ Route::get('/checkout-page', function () {
     return view('checkout-page');
 })->name('checkout');
 
-Route::get('/profile', function () {
-    return view('profile');
-})->name('profile');
+// pahile hyach file made check karaych ithe ahe ka konta function call ok ya sabghthi profile controller bnvav lagel manje separate rahil ok space nko bolo mi sorry
+Route::get('/profile', [ProfileController::class,'profile'])->name('profile');
 
 Route::get('/wishlist', function () {
     return view('wishlist');

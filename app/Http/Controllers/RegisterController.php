@@ -61,5 +61,6 @@ class RegisterController extends Controller
         } else {
             return redirect()->route('login')->with('error', 'Either email/password is incorrect.');
         }
+        
     }
 }
