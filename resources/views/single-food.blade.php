@@ -31,7 +31,6 @@ ata mala samajl kas te haa mg baki pages pn bnvun tak titka lvkr hoil mg ok ata 
     <div class="recipe-shapes">
         <span class="rs1"><img src="assets/images/shapes/12.png" alt=""></span>
         <span class="rs2"><img src="assets/images/shapes/13.png" alt=""></span>
-        <span class="rs3"><img src="assets/images/shapes/26.png" alt=""></span>
     </div>
     <div class="container">
         <div class="row align-items-center">

@@ -102,21 +102,8 @@
                     </div>
                     <div class="col-lg-4 col-md-9 col-8">
                         <div class="customer-area">
-                            {{-- @if(Auth::guest())
-                            <span>
-                                <a href="{{ route('wishlist') }}"><i class="fas fa-heart"></i></a>
-                            </span>
-                            <span>
-                                <a href="{{ route('profile') }}"><i class="fas fa-user"></i></a>
-                            </span>
-                            <span>
-                                <a href="{{ route('shopping.cart') }}"><i class="fas fa-shopping-basket"></i></a>
-                            </span>
-                            @else
-                            <a href="{{ route('login') }}" class="btn">login</a>
-                            @endif --}}
 
-                            @if(Auth::check())    
+                            @if (Auth::check())
                                 <span>
                                     <a href="{{ route('wishlist') }}"><i class="fas fa-heart"></i></a>
                                 </span>

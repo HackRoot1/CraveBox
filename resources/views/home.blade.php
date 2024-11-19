@@ -235,74 +235,9 @@
             </div>
           </div>
           @endforeach
-          {{-- <div class="col-lg-4 col-md-4">
-            <div class="single-menu-item d-flex justify-content-between align-items-center h-100">
-              <div class="menu-img">
-                <img src="assets/images/menu-item/piz2.png" alt="" />
-              </div>
-              <div class="menu-content">
-                <h5><a href="single-dish.html">Tomato</a></h5>
-                <p>shirmp. squid, pineapple</p>
-                <span>price :$15.00</span>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-4 col-md-4">
-            <div class="single-menu-item d-flex justify-content-between align-items-center h-100">
-              <div class="menu-img">
-                <img src="assets/images/menu-item/piz3.png" alt="" />
-              </div>
-              <div class="menu-content">
-                <h5><a href="single-dish.html">Marinara</a></h5>
-                <p>shirmp. squid, pineapple</p>
-                <span>price :$15.00</span>
-                <span class="del"><del>price :$15.00</del></span>
-              </div>
-            </div>
-          </div> --}}
+          
         </div>
         <hr />
-        <!-- second-row -->
-        {{-- <div class="row row-gap-4 margin-top-60">
-          <div class="col-lg-4 col-md-4">
-            <div class="single-menu-item d-flex justify-content-between align-items-center h-100">
-              <div class="menu-img">
-                <img src="assets/images/menu-item/piz4.png" alt="" />
-              </div>
-              <div class="menu-content">
-                <h5><a href="single-dish.html">Frutti Di Mare</a></h5>
-                <p>shirmp. squid, pineapple</p>
-                <span>price :$15.00</span>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-4 col-md-4">
-            <div class="single-menu-item d-flex justify-content-between align-items-center h-100">
-              <div class="menu-img">
-                <img src="assets/images/menu-item/piz5.png" alt="" />
-              </div>
-              <div class="menu-content">
-                <h5><a href="single-dish.html">Americana</a></h5>
-                <p>shirmp. squid, pineapple</p>
-                <span>price :$15.00</span>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-4 col-md-4">
-            <div class="single-menu-item d-flex justify-content-between align-items-center h-100">
-              <div class="menu-img">
-                <img src="assets/images/menu-item/piz6.png" alt="" />
-              </div>
-              <div class="menu-content">
-                <h5><a href="single-dish.html">Pizza Al Pesto</a></h5>
-                <p>shirmp. squid, pineapple</p>
-                <span>price :$15.00</span>
-                <span class="del"><del>price :$15.00</del></span>
-              </div>
-            </div>
-          </div>
-          <hr />
-        </div> --}}
 
         <div class="menu-btn text-center">
           <a href="shopping-cart.html" class="btn">order now</a>
