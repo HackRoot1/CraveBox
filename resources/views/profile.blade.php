@@ -66,8 +66,9 @@
                     <!-- dahoboard-tab -->
                     <div class="tab-pane fade show active" id="dahoboard" role="tabpanel"
                         aria-labelledby="dahoboard-tab" tabindex="0">
-                        <h5 class="tab-title">Hello <span>Alex!</span> </h5>
-                        <p>
+                        {{-- fakt id bhetato vatat he query made vaprun purn data fetch kar  array of object ahe ha   mg fakt nav kas lihaych ahe kas jala bgh--}}
+                        <h5 class="tab-title">Hello <span>{{ $user_data->fname}}!</span> </h5>
+                        <p> 
                             From your account dashboard. you can easily check &amp; view your recent
                             orders,<br> manage your shipping and billing addresses and edit your password and
                             account details.
@@ -297,15 +298,15 @@
                                 <h5 class="tab-title">Account Details</h5>
                                 <div class="mb-3">
                                     <label for="userName" class="form-label">Name</label>
-                                    <input type="text" class="form-control" id="userName">
+                                    <input type="text" class="form-control" id="userName" value="{{$user_data->fname}}  {{$user_data->lname}}">
                                 </div>
                                 <div class="mb-3">
                                     <label for="userPhone" class="form-label">Phone Number</label>
-                                    <input type="text" class="form-control" id="userPhone">
+                                    <input type="text" class="form-control" id="userPhone" value="{{$user_data->phone}}">
                                 </div>
                                 <div class="mb-3">
                                     <label for="email" class="form-label">Email</label>
-                                    <input type="text" class="form-control" id="email">
+                                    <input type="text" class="form-control" id="email" value="{{$user_data->email}}">
                                 </div>
                             </div>
                             <!-- password-change -->
