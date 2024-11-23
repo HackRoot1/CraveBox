@@ -14,12 +14,13 @@ Route::get('/login', function () {
     return view('login');
 })->name('login');
 
+// /food-page ha path jithe match hoil tithe jail 
 // Post route for registering and logging in
 Route::post('/register-data', [RegisterController::class, 'store'])->name('register.data');
 Route::post('/login', [RegisterController::class, 'authenticate'])->name('login.page');
 
 Route::get('/',[FoodsController::class,'foodsCategory'])->name('home'); 
-
+// Route::get('/', [FoodsController::class,'foodDish'])->name('food-page');
 
 Route::get('/single-food', function () {
     return view('single-food');
@@ -40,9 +41,12 @@ Route::get('/shopping-cart', function () {
     return view('shopping-cart');
 })->name('shopping.cart');
 
-Route::get('/food-page', function () {
-    return view('food-page');
-})->name('food.page');
+// step 1 smjli hya route la match zala mg yaat 2nd parameter cha function run hoil 
+// ithe direct view ahe 
+// ithe controller tak manje ithun controller chya function kade redirect hoil cursor aapla  brobar ka haa
+Route::get('/food-page', [FoodsController::class,'foodDish'])->name('food.page'); 
+
+
 Route::fallback(function(){
     return view('errors.404');
 });
