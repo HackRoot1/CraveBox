@@ -114,15 +114,6 @@
                     </div>
                     <div class="col-lg-4 col-md-9 col-8">
                         <div class="customer-area">
-                            <span>
-                                <a href="wishlist.html"><i class="fas fa-heart"></i></a>
-                            </span>
-                            <span>
-                                <a href="profile.html"><i class="fas fa-user"></i></a>
-                            </span>
-                            <span>
-                                <a href="shopping-cart.html"><i class="fas fa-shopping-basket"></i></a>
-                            </span>
                             <a href="{{ route('login') }}" class="btn">login</a>
                         </div>
                     </div>
