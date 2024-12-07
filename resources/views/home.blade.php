@@ -186,94 +186,21 @@
       <div class="row">
         <ul class="nav" id="menuAreaTab" role="tablist">
           <!-- menu-nav-1 -->
+          @foreach ($foods_category as $category) 
           <li class="nav-item" role="presentation">
-            <div class="nav-link active" id="menu1-tab" data-bs-toggle="tab" data-bs-target="#menu1-tab-pane"
+            <div class="nav-link {{  ($category == 'Main Course') ? "active" : "" }}" id="menu1-tab" data-bs-toggle="tab" data-bs-target="#menu1-tab-pane"
               role="tab" aria-controls="menu1-tab-pane" aria-selected="true">
               <div class="single-menu-nav text-center">
                 <div class="menu-img margin-bottom-10">
                   <img src="assets/images/menu-item/pizza.png" alt="" />
                 </div>
-                <h6>pizza</h6>
-                <span class="g-s-4"><img src="assets/images/shapes/10.png" alt="" /></span>
+                <h6>{{$category}}</h6> 
+                <span class="g-s-4"><img src="assets/images/shapes/{{$category}}" alt="" /></span>
                 <span class="g-s-5"><img src="assets/images/shapes/14.png" alt="" /></span>
               </div>
             </div>
           </li>
-
-          <!-- menu-nav-2 -->
-          <li class="nav-item" role="presentation">
-            <div class="nav-link" id="menu2-tab" data-bs-toggle="tab" data-bs-target="#menu2-tab-pane" role="tab"
-              aria-controls="menu2-tab-pane" aria-selected="false">
-              <div class="single-menu-nav text-center">
-                <div class="menu-img margin-bottom-10">
-                  <img src="assets/images/menu-item/burger.png" alt="" />
-                </div>
-                <h6>burger</h6>
-                <span class="g-s-4"><img src="assets/images/shapes/10.png" alt="" /></span>
-                <span class="g-s-5"><img src="assets/images/shapes/14.png" alt="" /></span>
-              </div>
-            </div>
-          </li>
-
-          <!-- menu-nav-3 -->
-          <li class="nav-item" role="presentation">
-            <div class="nav-link" id="menu3-tab" data-bs-toggle="tab" data-bs-target="#menu3-tab-pane" role="tab"
-              aria-controls="menu3-tab-pane" aria-selected="false">
-              <div class="single-menu-nav text-center">
-                <div class="menu-img margin-bottom-10">
-                  <img src="assets/images/menu-item/chicken.png" alt="" />
-                </div>
-                <h6>chicken</h6>
-                <span class="g-s-4"><img src="assets/images/shapes/10.png" alt="" /></span>
-                <span class="g-s-5"><img src="assets/images/shapes/14.png" alt="" /></span>
-              </div>
-            </div>
-          </li>
-
-          <!-- menu-nav-4 -->
-          <li class="nav-item" role="presentation">
-            <div class="nav-link" id="menu4-tab" data-bs-toggle="tab" data-bs-target="#menu4-tab-pane" role="tab"
-              aria-controls="menu4-tab-pane" aria-selected="false">
-              <div class="single-menu-nav text-center">
-                <div class="menu-img margin-bottom-10">
-                  <img src="assets/images/menu-item/drinks.png" alt="" />
-                </div>
-                <h6>drinks</h6>
-                <span class="g-s-4"><img src="assets/images/shapes/10.png" alt="" /></span>
-                <span class="g-s-5"><img src="assets/images/shapes/14.png" alt="" /></span>
-              </div>
-            </div>
-          </li>
-
-          <!-- menu-nav-5 -->
-          <li class="nav-item" role="presentation">
-            <div class="nav-link" id="menu5-tab" data-bs-toggle="tab" data-bs-target="#menu5-tab-pane" role="tab"
-              aria-controls="menu5-tab-pane" aria-selected="false">
-              <div class="single-menu-nav text-center">
-                <div class="menu-img margin-bottom-10">
-                  <img src="assets/images/menu-item/drinks2.png" alt="" />
-                </div>
-                <h6>drinks</h6>
-                <span class="g-s-4"><img src="assets/images/shapes/10.png" alt="" /></span>
-                <span class="g-s-5"><img src="assets/images/shapes/14.png" alt="" /></span>
-              </div>
-            </div>
-          </li>
-
-          <!-- menu-nav-6 -->
-          <li class="nav-item" role="presentation">
-            <div class="nav-link" id="menu6-tab" data-bs-toggle="tab" data-bs-target="#menu6-tab-pane" role="tab"
-              aria-controls="menu6-tab-pane" aria-selected="false">
-              <div class="single-menu-nav text-center">
-                <div class="menu-img margin-bottom-10">
-                  <img src="assets/images/menu-item/combo.png" alt="" />
-                </div>
-                <h6>combo menu</h6>
-                <span class="g-s-4"><img src="assets/images/shapes/10.png" alt="" /></span>
-                <span class="g-s-5"><img src="assets/images/shapes/14.png" alt="" /></span>
-              </div>
-            </div>
-          </li>
+          @endforeach
         </ul>
       </div>
     </div>
@@ -294,86 +221,23 @@
         </div>
         <!-- first-row -->
         <div class="row row-gap-4">
-          <div class="col-lg-4 col-md-4">
+          @foreach ($foods_data as $food)
+          <div class="col-lg-4 col-md-4"> 
             <div class="single-menu-item d-flex justify-content-between align-items-center h-100">
               <div class="menu-img">
                 <img src="assets/images/menu-item/piz1.png" alt="" />
               </div>
               <div class="menu-content">
-                <h5><a href="single-dish.html">Margherita</a></h5>
-                <p>shirmp. squid, pineapple</p>
-                <span>price :$15.00</span>
+                <h5><a href="single-dish.html">{{ $food->name  }}</a></h5>
+                <p>{{ $food->ingredient }}</p>
+                <span>price :${{ $food->price }}</span>
               </div>
             </div>
           </div>
-          <div class="col-lg-4 col-md-4">
-            <div class="single-menu-item d-flex justify-content-between align-items-center h-100">
-              <div class="menu-img">
-                <img src="assets/images/menu-item/piz2.png" alt="" />
-              </div>
-              <div class="menu-content">
-                <h5><a href="single-dish.html">Tomato</a></h5>
-                <p>shirmp. squid, pineapple</p>
-                <span>price :$15.00</span>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-4 col-md-4">
-            <div class="single-menu-item d-flex justify-content-between align-items-center h-100">
-              <div class="menu-img">
-                <img src="assets/images/menu-item/piz3.png" alt="" />
-              </div>
-              <div class="menu-content">
-                <h5><a href="single-dish.html">Marinara</a></h5>
-                <p>shirmp. squid, pineapple</p>
-                <span>price :$15.00</span>
-                <span class="del"><del>price :$15.00</del></span>
-              </div>
-            </div>
-          </div>
+          @endforeach
+          
         </div>
         <hr />
-        <!-- second-row -->
-        <div class="row row-gap-4 margin-top-60">
-          <div class="col-lg-4 col-md-4">
-            <div class="single-menu-item d-flex justify-content-between align-items-center h-100">
-              <div class="menu-img">
-                <img src="assets/images/menu-item/piz4.png" alt="" />
-              </div>
-              <div class="menu-content">
-                <h5><a href="single-dish.html">Frutti Di Mare</a></h5>
-                <p>shirmp. squid, pineapple</p>
-                <span>price :$15.00</span>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-4 col-md-4">
-            <div class="single-menu-item d-flex justify-content-between align-items-center h-100">
-              <div class="menu-img">
-                <img src="assets/images/menu-item/piz5.png" alt="" />
-              </div>
-              <div class="menu-content">
-                <h5><a href="single-dish.html">Americana</a></h5>
-                <p>shirmp. squid, pineapple</p>
-                <span>price :$15.00</span>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-4 col-md-4">
-            <div class="single-menu-item d-flex justify-content-between align-items-center h-100">
-              <div class="menu-img">
-                <img src="assets/images/menu-item/piz6.png" alt="" />
-              </div>
-              <div class="menu-content">
-                <h5><a href="single-dish.html">Pizza Al Pesto</a></h5>
-                <p>shirmp. squid, pineapple</p>
-                <span>price :$15.00</span>
-                <span class="del"><del>price :$15.00</del></span>
-              </div>
-            </div>
-          </div>
-          <hr />
-        </div>
 
         <div class="menu-btn text-center">
           <a href="shopping-cart.html" class="btn">order now</a>
@@ -1031,18 +895,17 @@
     <div class="tab-pane fade show active" id="all-items-tab-pane" role="tabpanel" aria-labelledby="all-items-tab"
       tabindex="0">
       <div class="row">
+        @foreach($food_item as $fooddish)
         <div class="col-xl-3 col-lg-3 col-md-6">
           <div class="single-dishes">
             <div class="dish-img">
               <img src="assets/images/menu-item/pd1.png" style="width: inherit" alt="" />
             </div>
             <div class="dish-content">
-              <h5><a href="single-dish.html">Garlic Burger </a></h5>
-              <p>
-                It is a long established fact that a reader BBQ food
-                Chicken.
+              <h5><a href="single-dish.html">{{$fooddish->name}} </a></h5>
+              <p>{{$fooddish->description}}
               </p>
-              <span class="price">price :$15.00</span>
+              <span class="price">price :${{$fooddish->price}}</span>
             </div>
             <span class="badge">hot</span>
             <div class="cart-opt">
@@ -1055,178 +918,7 @@
             </div>
           </div>
         </div>
-        <div class="col-xl-3 col-lg-3 col-md-6">
-          <div class="single-dishes">
-            <div class="dish-img">
-              <img src="assets/images/menu-item/pd2.png" style="width: inherit" alt="" />
-            </div>
-            <div class="dish-content">
-              <h5><a href="single-dish.html">Vegetable Pizza </a></h5>
-              <p>
-                It is a long established fact that a reader BBQ food
-                Chicken.
-              </p>
-              <span class="price">price :$15.00</span>
-            </div>
-            <span class="badge"></span>
-            <div class="cart-opt">
-              <span>
-                <a href="#"><i class="fas fa-heart"></i></a>
-              </span>
-              <span>
-                <a href="shopping-cart.html"><i class="fas fa-shopping-basket"></i></a>
-              </span>
-            </div>
-          </div>
-        </div>
-        <div class="col-xl-3 col-lg-3 col-md-6">
-          <div class="single-dishes">
-            <div class="dish-img">
-              <img src="assets/images/menu-item/pd3.png" style="width: inherit" alt="" />
-            </div>
-            <div class="dish-content">
-              <h5><a href="single-dish.html">Chicken Fry </a></h5>
-              <p>
-                It is a long established fact that a reader BBQ food
-                Chicken.
-              </p>
-              <span class="price badge-color">price :$15.00</span>
-              <span class="rating">
-                <i class="fas fa-star"></i> 5star</span>
-            </div>
-            <span class="badge badge-bg-color">new</span>
-            <div class="cart-opt">
-              <span>
-                <a href="#"><i class="fas fa-heart"></i></a>
-              </span>
-              <span>
-                <a href="shopping-cart.html"><i class="fas fa-shopping-basket"></i></a>
-              </span>
-            </div>
-          </div>
-        </div>
-        <div class="col-xl-3 col-lg-3 col-md-6">
-          <div class="single-dishes">
-            <div class="dish-img">
-              <img src="assets/images/menu-item/pd4.png" style="width: inherit" alt="" />
-            </div>
-            <div class="dish-content">
-              <h5><a href="single-dish.html">Chickpea Soup </a></h5>
-              <p>
-                It is a long established fact that a reader BBQ food
-                Chicken.
-              </p>
-              <span class="price">price :$15.00</span>
-            </div>
-            <span class="badge">sale</span>
-            <div class="cart-opt">
-              <span>
-                <a href="#"><i class="fas fa-heart"></i></a>
-              </span>
-              <span>
-                <a href="shopping-cart.html"><i class="fas fa-shopping-basket"></i></a>
-              </span>
-            </div>
-          </div>
-        </div>
-        <div class="col-xl-3 col-lg-3 col-md-6">
-          <div class="single-dishes">
-            <div class="dish-img">
-              <img src="assets/images/menu-item/pd5.png" style="width: inherit" alt="" />
-            </div>
-            <div class="dish-content">
-              <h5><a href="single-dish.html">Garlic Burger </a></h5>
-              <p>
-                It is a long established fact that a reader BBQ food
-                Chicken.
-              </p>
-              <span class="price">price :$15.00</span>
-            </div>
-            <span class="badge">hot</span>
-            <div class="cart-opt">
-              <span>
-                <a href="#"><i class="fas fa-heart"></i></a>
-              </span>
-              <span>
-                <a href="shopping-cart.html"><i class="fas fa-shopping-basket"></i></a>
-              </span>
-            </div>
-          </div>
-        </div>
-        <div class="col-xl-3 col-lg-3 col-md-6">
-          <div class="single-dishes">
-            <div class="dish-img">
-              <img src="assets/images/menu-item/pd6.png" style="width: inherit" alt="" />
-            </div>
-            <div class="dish-content">
-              <h5><a href="single-dish.html">Vegetable Pizza </a></h5>
-              <p>
-                It is a long established fact that a reader BBQ food
-                Chicken.
-              </p>
-              <span class="price">price :$15.00</span>
-            </div>
-            <span class="badge"></span>
-            <div class="cart-opt">
-              <span>
-                <a href="#"><i class="fas fa-heart"></i></a>
-              </span>
-              <span>
-                <a href="shopping-cart.html"><i class="fas fa-shopping-basket"></i></a>
-              </span>
-            </div>
-          </div>
-        </div>
-        <div class="col-xl-3 col-lg-3 col-md-6">
-          <div class="single-dishes">
-            <div class="dish-img">
-              <img src="assets/images/menu-item/pd7.png" style="width: inherit" alt="" />
-            </div>
-            <div class="dish-content">
-              <h5><a href="single-dish.html">Chicken Fry </a></h5>
-              <p>
-                It is a long established fact that a reader BBQ food
-                Chicken.
-              </p>
-              <span class="badge-color price">price :$15.00</span>
-              <span class="rating">
-                <i class="fas fa-star"></i> 5star</span>
-            </div>
-            <span class="badge"></span>
-            <div class="cart-opt">
-              <span>
-                <a href="#"><i class="fas fa-heart"></i></a>
-              </span>
-              <span>
-                <a href="shopping-cart.html"><i class="fas fa-shopping-basket"></i></a>
-              </span>
-            </div>
-          </div>
-        </div>
-        <div class="col-xl-3 col-lg-3 col-md-6">
-          <div class="single-dishes">
-            <div class="dish-img">
-              <img src="assets/images/menu-item/pd8.png" style="width: inherit" alt="" />
-            </div>
-            <div class="dish-content">
-              <h5><a href="single-dish.html">Chickpea Soup </a></h5>
-              <p>
-                It is a long established fact that a reader BBQ food
-                Chicken.
-              </p>
-              <span class="price">price :$15.00</span>
-            </div>
-            <span class="badge">sale</span>
-            <div class="cart-opt">
-              <span>
-                <a href="#"><i class="fas fa-heart"></i></a>
-              </span>
-              <span>
-                <a href="shopping-cart.html"><i class="fas fa-shopping-basket"></i></a>
-              </span>
-            </div>
-          </div>
-        </div>
+        @endforeach
       </div>
     </div>
 

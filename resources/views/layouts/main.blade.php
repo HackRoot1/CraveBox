@@ -102,16 +102,20 @@
                     </div>
                     <div class="col-lg-4 col-md-9 col-8">
                         <div class="customer-area">
-                            <span>
-                                <a href="{{ route('wishlist') }}"><i class="fas fa-heart"></i></a>
-                            </span>
-                            <span>
-                                <a href="{{ route('profile') }}"><i class="fas fa-user"></i></a>
-                            </span>
-                            <span>
-                                <a href="{{ route('shopping.cart') }}"><i class="fas fa-shopping-basket"></i></a>
-                            </span>
-                            <a href="{{ route('login') }}" class="btn">login</a>
+
+                            @if (Auth::check())
+                                <span>
+                                    <a href="{{ route('wishlist') }}"><i class="fas fa-heart"></i></a>
+                                </span>
+                                <span>
+                                    <a href="{{ route('profile') }}"><i class="fas fa-user"></i></a>
+                                </span>
+                                <span>
+                                    <a href="{{ route('shopping.cart') }}"><i class="fas fa-shopping-basket"></i></a>
+                                </span>
+                            @else
+                                <a href="{{ route('login') }}" class="btn">login</a>
+                            @endif
                         </div>
                     </div>
                 </div>
