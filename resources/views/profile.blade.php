@@ -65,7 +65,6 @@
                         <!-- dahoboard-tab -->
                         <div class="tab-pane fade show active" id="dahoboard" role="tabpanel"
                             aria-labelledby="dahoboard-tab" tabindex="0">
-                            {{-- fakt id bhetato vatat he query made vaprun purn data fetch kar  array of object ahe ha   mg fakt nav kas lihaych ahe kas jala bgh --}}
                             <h5 class="tab-title">Hello <span>{{ $user_data->fname }}!</span> </h5>
                             <p>
                                 From your account dashboard. you can easily check &amp; view your recent
@@ -92,7 +91,7 @@
                                                 <td>March 45, 2020</td>
                                                 <td>Processing</td>
                                                 <td>Uttara Branch</td>
-                                                <td>$125.00</td>
+                                                <td>₹125.00</td>
                                                 <td><a href="#" class="btn-small d-block">Cancel Order</a></td>
                                             </tr>
                                             <tr>
@@ -100,7 +99,7 @@
                                                 <td>June 29, 2020</td>
                                                 <td>Completed</td>
                                                 <td>Dhaka Branch</td>
-                                                <td>$364.00</td>
+                                                <td>₹364.00</td>
                                                 <td><a href="#" class="btn-small d-block">Cancel Order</a></td>
                                             </tr>
                                             <tr>
@@ -108,7 +107,7 @@
                                                 <td>August 02, 2020</td>
                                                 <td>Completed</td>
                                                 <td>USA Branch</td>
-                                                <td>$280.00</td>
+                                                <td>₹280.00</td>
                                                 <td><a href="#" class="btn-small d-block">Cancel Order</a></td>
                                             </tr>
                                         </tbody>
@@ -150,7 +149,7 @@
                                             <td>March 45, 2020</td>
                                             <td>Processing</td>
                                             <td>Uttara Branch</td>
-                                            <td>$125.00</td>
+                                            <td>₹125.00</td>
                                             <td><a href="#" class="btn-small d-block">Cancel Order</a></td>
                                         </tr>
                                         <tr>
@@ -158,7 +157,7 @@
                                             <td>June 29, 2020</td>
                                             <td>Completed</td>
                                             <td>Dhaka Branch</td>
-                                            <td>$364.00</td>
+                                            <td>₹364.00</td>
                                             <td><a href="#" class="btn-small d-block">Cancel Order</a></td>
                                         </tr>
                                         <tr>
@@ -166,7 +165,7 @@
                                             <td>August 02, 2020</td>
                                             <td>Completed</td>
                                             <td>USA Branch</td>
-                                            <td>$280.00</td>
+                                            <td>₹280.00</td>
                                             <td><a href="#" class="btn-small d-block">Cancel Order</a></td>
                                         </tr>
                                     </tbody>

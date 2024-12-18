@@ -56,6 +56,7 @@
                             <input type="tel" placeholder="phone" required>
                             <input type="email" placeholder="email address" required>
                             <input type="text" placeholder="order notes(optional)">
+                            <input type="hidden" id="razorpay-key" value="{{ $key }}">
                         </div>
                     </div>
                     <div class="col-lg-6  wow fadeInUp ">
@@ -67,55 +68,47 @@
                                     <li class="uppercase">total</li>
                                 </ul>
                                 <div class="divider"></div>
-                                <ul>
-                                    <li>Ultimate Photoshop Training</li>
-                                    <li>$1,699</li>
-                                </ul>
-                                <ul>
-                                    <li>The Complete Financial Analyst</li>
-                                    <li>$1,699</li>
-                                </ul>
-                                <ul>
-                                    <li>The Complete Advanced WP</li>
-                                    <li>$1,699</li>
-                                </ul>
+                                @foreach ($orders as $order)
+                                    <ul>
+                                        <li>{{ $order->name }}</li>
+                                        <li>₹<span class="itemsTotalPrice">{{ $order->total_price }}</span></li>
+                                    </ul>
+                                @endforeach
                                 <ul>
                                     <li class="uppercase"><b>subtotal</b></li>
-                                    <li><b>$5,699</b></li>
+                                    <li><b>₹<span class="subTotalPrice">5,699</span></b></li>
                                 </ul>
                                 <ul>
                                     <li class="uppercase"><b>Perched</b></li>
-                                    <li>Flat rate: $5.00</li>
+                                    <li>Flat rate: ₹5.00</li>
                                     <li>Bank Transfer</li>
                                     <li>free</li>
                                 </ul>
                                 <ul class="bg-white">
                                     <li class="uppercase">total</li>
-                                    <li class="total"><b>$5,699</b></li>
+                                    <li class="total"><b>₹<span class="totalPrice">5,699</span></b></li>
                                 </ul>
                             </div>
-                            <input type="radio" id="bank">
-                            <label for="bank">DIRECT BANK TRANSFER</label>
-                            <br>
-                            <input type="radio" id="check">
-                            <label for="check">CHECK PAYMENTS</label>
                             <br>
                             <div class="payment-img">
-                                <a href="#"><img src="assets/images/img/payment.png" alt=""></a>
+                                <input type="radio" name="order-type" id="bank">
+                                <label for="bank">
+                                    <img src="assets/images/img/payment.png" alt="">
+                                </label>
                             </div>
-                            <input type="radio" id="cash">
+                            <input type="radio" name="order-type" id="cash">
                             <label for="cash">CASH ON DELIVERY</label>
                             <br>
 
-                            <input type="radio" id="terms">
-                            <label for="terms">I’ve read and accept the <a href="#">terms & conditions *</a></label>
+                            <input type="radio" id="terms" required>
+                            <label for="terms">I’ve read and accept the <a href="#">terms & conditions
+                                    *</a></label>
                             <br>
-                            <button type="submit" class="btn">place order</button>
+                            <button type="submit" id="checkoutOrder" class="btn">place order</button>
                         </div>
                     </div>
                 </div>
             </form>
         </div>
     </div>
-    
 @endsection
