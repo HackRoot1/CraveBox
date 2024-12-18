@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\FoodsController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RegisterController;
 use Illuminate\Support\Facades\Route;
 
@@ -12,38 +14,34 @@ Route::get('/login', function () {
     return view('login');
 })->name('login');
 
-// Post route for registering and logging in
 Route::post('/register-data', [RegisterController::class, 'store'])->name('register.data');
 Route::post('/login', [RegisterController::class, 'authenticate'])->name('login.page');
 
-// pages 
-Route::get('/', function () {
-    return view('home');
-})->name('home');
 
-Route::get('/single-food', function () {
-    return view('single-food');
-})->name('single.food');
+Route::get('/', [FoodsController::class, 'foodsCategory'])->name('home');
 
-Route::get('/checkout-page', function () {
-    return view('checkout-page');
-})->name('checkout');
 
-Route::get('/profile', function () {
-    return view('profile');
-})->name('profile');
+Route::get('/food-page/{filterValue?}', [FoodsController::class, 'foodDish'])->name('food.page');
+Route::get('/single-food/{id}', [FoodsController::class, 'singleFoodData'])->name('single.food');
 
-Route::get('/wishlist', function () {
-    return view('wishlist');
-})->name('wishlist');
 
-Route::get('/shopping-cart', function () {
-    return view('shopping-cart');
-})->name('shopping.cart');
+Route::get('/checkout', [FoodsController::class, 'checkoutFood'])->name('checkout');
 
-Route::get('/food-page', function () {
-    return view('food-page');
-})->name('food.page');
-Route::fallback(function(){
+
+Route::get('/profile', [ProfileController::class, 'profile'])->name('profile');
+
+
+Route::get('/wishlist', [FoodsController::class, 'wishlist'])->name('wishlist');
+Route::get('/wishlist/{id}', [FoodsController::class, 'addToWishlist'])->name('add.wishlist');
+Route::get('/wishlist/delete/{id}', [FoodsController::class, 'deleteToWishlist'])->name('delete.wishlist');
+
+
+Route::get('/shopping-cart', [FoodsController::class, 'ShopingCart'])->name('shopping.cart');
+Route::get('/add-shopping-cart/{id}', [FoodsController::class, 'addShopingCart'])->name('add.shopping.cart');
+Route::get('/add-shopping-cart/delete/{id}', [FoodsController::class, 'deleteShopingCart'])->name('delete.shopping.cart');
+
+
+
+Route::fallback(function () {
     return view('errors.404');
 });
