@@ -330,6 +330,20 @@ This table will store customer reviews or testimonials about the restaurant.
 
 
 
+### 11. **wishlist** 
+
+| Column Name     | Data Type       | Constraints                                  |
+|-----------------|-----------------|----------------------------------------------|
+| `id`            | `BIGINT`        | Primary Key, Auto-increment                  |
+| `user_id`       | `VARCHAR(255)`  | Not Null                                     |
+| `food_id`       | `VARCHAR(255)`  | Nullable                                     |
+| `created_at`    | `TIMESTAMP`     | Not Null, Default `CURRENT_TIMESTAMP`        |
+| `updated_at`    | `TIMESTAMP`     | Not Null, Default `CURRENT_TIMESTAMP`        |
+
+
+
+
+
 
 
 ---

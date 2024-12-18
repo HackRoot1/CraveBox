@@ -14,39 +14,34 @@ Route::get('/login', function () {
     return view('login');
 })->name('login');
 
-// /food-page ha path jithe match hoil tithe jail 
-// Post route for registering and logging in
 Route::post('/register-data', [RegisterController::class, 'store'])->name('register.data');
 Route::post('/login', [RegisterController::class, 'authenticate'])->name('login.page');
 
-Route::get('/',[FoodsController::class,'foodsCategory'])->name('home'); 
-// Route::get('/', [FoodsController::class,'foodDish'])->name('food-page');
 
-Route::get('/single-food', function () {
-    return view('single-food');
-})->name('single.food');
-
-Route::get('/checkout-page', function () {
-    return view('checkout-page');
-})->name('checkout');
-
-// pahile hyach file made check karaych ithe ahe ka konta function call ok ya sabghthi profile controller bnvav lagel manje separate rahil ok space nko bolo mi sorry
-Route::get('/profile', [ProfileController::class,'profile'])->name('profile');
-
-Route::get('/wishlist', function () {
-    return view('wishlist');
-})->name('wishlist');
-
-Route::get('/shopping-cart', function () {
-    return view('shopping-cart');
-})->name('shopping.cart');
-
-// step 1 smjli hya route la match zala mg yaat 2nd parameter cha function run hoil 
-// ithe direct view ahe 
-// ithe controller tak manje ithun controller chya function kade redirect hoil cursor aapla  brobar ka haa
-Route::get('/food-page', [FoodsController::class,'foodDish'])->name('food.page'); 
+Route::get('/', [FoodsController::class, 'foodsCategory'])->name('home');
 
 
-Route::fallback(function(){
+Route::get('/food-page/{filterValue?}', [FoodsController::class, 'foodDish'])->name('food.page');
+Route::get('/single-food/{id}', [FoodsController::class, 'singleFoodData'])->name('single.food');
+
+
+Route::get('/checkout', [FoodsController::class, 'checkoutFood'])->name('checkout');
+
+
+Route::get('/profile', [ProfileController::class, 'profile'])->name('profile');
+
+
+Route::get('/wishlist', [FoodsController::class, 'wishlist'])->name('wishlist');
+Route::get('/wishlist/{id}', [FoodsController::class, 'addToWishlist'])->name('add.wishlist');
+Route::get('/wishlist/delete/{id}', [FoodsController::class, 'deleteToWishlist'])->name('delete.wishlist');
+
+
+Route::get('/shopping-cart', [FoodsController::class, 'ShopingCart'])->name('shopping.cart');
+Route::get('/add-shopping-cart/{id}', [FoodsController::class, 'addShopingCart'])->name('add.shopping.cart');
+Route::get('/add-shopping-cart/delete/{id}', [FoodsController::class, 'deleteShopingCart'])->name('delete.shopping.cart');
+
+
+
+Route::fallback(function () {
     return view('errors.404');
 });

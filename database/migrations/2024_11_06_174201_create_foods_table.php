@@ -13,7 +13,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('foods', function (Blueprint $table) {
-            $table->id()->primary();
+            $table->id();
             $table->string('name', 255)->nullable(false);
             $table->text('description')->nullable();
             $table->decimal('price', 8, 2)->nullable(false);
@@ -21,14 +21,13 @@ return new class extends Migration
             $table->text('ingredient')->nullable(false); 
             $table->string('image', 255)->nullable();
             $table->boolean('is_available')->default(true);
-
             $table->timestamps();
         });
     }
 
     /**
      * Reverse the migrations.
-     *///konta kru konta easy vatato bgh to kar 
+     */
     public function down(): void
     {
         Schema::dropIfExists('foods');
