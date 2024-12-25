@@ -36,6 +36,8 @@
         <div class="container padding-top-120 padding-bottom-120">
             <div class="row">
                 <div class="col-lg-3 col-md-4">
+
+
                     <!-- sidebar-widget-1 -->
                     <div class="sidebar-widget-1 wow fadeInUp">
                         <h5>Hot Sale Products</h5>
@@ -117,55 +119,24 @@
 
 
                     </div>
+
+
                     <!-- sidebar-widget-3 -->
                     <div class="sidebar-widget-3 wow fadeInUp">
                         <h5>filter by menu</h5>
                         @foreach ($foods_category as $category)
                             <div id="filterMenu" class="sidebar-widget cursor-pointer d-flex align-items-center">
-                                <div class="dish-img">
-                                    <a href="single-food.html"> <img src="assets/images/menu-item/fm1.png"
-                                            alt=""></a>
+                                <div class="dish-img" style="width: 70px">
+                                    <a href="single-food.html"> 
+                                        <img width="100px" height="100px" style="height: 50px" src="/assets/images/menu-item/{{ $category->image }}" alt="">
+                                    </a>
                                 </div>
                                 <div class="dish-content d-flex justify-content-between">
-                                    <h6> <a href="{{ route('food.page', $category) }}">{{ $category }}</a></h6>
+                                    <h6> <a href="{{ route('food.page', $category->category) }}">{{ $category->category }}</a></h6>
                                 </div>
                             </div>
                         @endforeach
 
-                        {{-- <div class="sidebar-widget d-flex align-items-center">
-                            <div class="dish-img">
-                                <a href="single-food.html"> <img src="assets/images/menu-item/fm2.png"
-                                        alt=""></a>
-                            </div>
-                            <div class="dish-content d-flex justify-content-between">
-                                <h6> <a href="single-food.html">Chicken fry
-                                    </a></h6>
-                                <span class="price">50</span>
-                            </div>
-                        </div>
-                        <div class="sidebar-widget d-flex align-items-center">
-                            <div class="dish-img">
-                                <a href="single-food.html"> <img src="assets/images/menu-item/fm3.png"
-                                        alt=""></a>
-                            </div>
-                            <div class="dish-content d-flex justify-content-between">
-                                <h6> <a href="single-food.html">Pizza
-                                    </a></h6>
-                                <span class="price">20</span>
-                            </div>
-                        </div>
-                        <div class="sidebar-widget d-flex align-items-center">
-                            <div class="dish-img">
-                                <a href="single-food.html"><img src="assets/images/menu-item/fm4.png" alt=""></a>
-                            </div>
-                            <div class="dish-content d-flex">
-
-                                <h6> <a href="single-food.html">Chicken fry
-                                    </a></h6>
-
-                                <span class="price">50</span>
-                            </div>
-                        </div> --}}
                     </div>
 
                     <!-- sidebar-widget-4 -->

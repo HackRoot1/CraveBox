@@ -114,12 +114,12 @@
                             <div class="lower-table-info">
                                 <ul class="d-flex justify-content-between">
                                     <li class="sub">SUBTOTAL</li>
-                                    <li>₹40</li>
+                                    <li>₹<span class="subtotal">40</span></li>
                                 </ul>
                                 <hr>
                                 <ul class="d-flex justify-content-between">
                                     <li>Grand Total</li>
-                                    <li>₹20</li>
+                                    <li>₹<span class="grandTotal">20</span></li>
                                 </ul>
                                 <button class="btn" type="submit">Proceed to checkout</button>
                             </div>

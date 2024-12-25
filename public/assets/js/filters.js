@@ -1,4 +1,5 @@
 $(document).ready(function () {
+    // On home page Popular dishes filter API
     $(document).on("click", "#popularDishesTab .nav-link", function () {
         let filterValue = $(this).text().trim();
 
@@ -46,6 +47,7 @@ $(document).ready(function () {
         });
     });
 
+    // On home page Popular menu API
     $(document).on("click", "#menuAreaTab .nav-link", function () {
         let filterValue = $(this).text();
 
@@ -72,54 +74,6 @@ $(document).ready(function () {
                                 </div>`;
                 });
                 $("#popularMenu .row").html(content);
-            },
-            error: function (xhr, status, error) {
-                console.log("Error" + xhr.responseText);
-            },
-        });
-    });
-
-    $(document).on("", "#filterMenu", function () {
-        let filterValue = $(this).text();
-
-        $.ajax({
-            url: "/api/all-menu",
-            type: "POST",
-            ContentType: "application/json",
-            data: { filterValue: filterValue },
-            success: function (data) {
-                console.log(data);
-                let content = "";
-                data.filterData.data.forEach((element) => {
-                    content += `<div class="col-xl-4 col-lg-4 col-md-6 wow fadeInUp" data-wow-delay=".2s">
-                                    <div class="single-dishes">
-                                        <div class="dish-img">
-                                            <img src="/assets/images/menu-item/${element.image}"
-                                                style="width: inherit;" alt="">
-                                        </div>
-                                        <div class="dish-content">
-                                            <h5><a href="{{ route('single.food', ${element.id}) }}">
-                                                    ${element.name}
-                                                </a></h5>
-                                            <p>${element.description}</p>
-                                            <span class="price">price :₹${element.price}</span>
-
-                                        </div>
-                                        <span class="badge">hot</span>
-                                        <div class="cart-opt">
-                                            <span>
-                                                <a href="{{ route('add.wishlist', ${element.id}) }}"><i
-                                                        class="fas fa-heart"></i></a>
-                                            </span>
-                                            <span>
-                                                <a href="{{ route('add.shopping.cart', ${element.id}) }}"><i
-                                                        class="fas fa-shopping-basket"></i></a>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>`;
-                });
-                $("#food1 .row").html(content);
             },
             error: function (xhr, status, error) {
                 console.log("Error" + xhr.responseText);
@@ -158,6 +112,7 @@ $(document).ready(function () {
     });
 
 
+    // payment related API
     $(document).on("click", "#checkoutOrder", async function () {
         let totalAmount = $(".totalPrice").text();
 
