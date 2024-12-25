@@ -205,14 +205,26 @@
     <script>
         $(document).ready(function() {
 
-            $(".cart-item-price").map((index, item) => {
-                console.log(index);
-                let originalPrice = item.innerText;
-                let quantity = $(item).parent().siblings('.cart-item-quantity').children('input').val();
-                let subTotal = originalPrice * quantity;
-                console.log($(item).parent().siblings('.text-center').text("₹" +subTotal));
+            function loadShoppingCart() {
+                let subTotalOfAllItems = 0;
+                $(".cart-item-price").map((index, item) => {
+                    let originalPrice = item.innerText;
+                    let quantity = $(item).parent().siblings('.cart-item-quantity').children('input').val();
+                    let subTotal = originalPrice * quantity;
+                    console.log($(item).parent().siblings('.text-center').text("₹" +subTotal));
+                    subTotalOfAllItems += subTotal;
+
+                    $(".subtotal").text(subTotalOfAllItems);
+                    $(".grandTotal").text(subTotalOfAllItems);
+                });
+            }
+
+            loadShoppingCart();
+            $(document).on("change", ".cart-item-quantity input", function() {
+                loadShoppingCart();
             });
 
+            
 
             // single food page where user can set quantity 
             // user can get minimum of 1 item 

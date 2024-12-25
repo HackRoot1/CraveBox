@@ -39,8 +39,7 @@
                         <div class="slider-for">
                             <div class="single-slide">
                                 <div class="product-content">
-                                    <img class="mp" src="/assets/images/menu-item/{{ $food_data->image }}"
-                                        alt="">
+                                    <img class="mp" src="/assets/images/menu-item/{{ $food_data->image }}" alt="">
                                     <img class="pbadge" src="{{ asset('assets/images/icons/pbadge.png') }}" alt="">
                                 </div>
                             </div>
@@ -77,6 +76,7 @@
                         </div>
                     </div>
                 </div>
+
                 <div class="col-lg-6 wow fadeInRight">
                     <div class="recipe-right">
                         <h2>{{ $food_data->name }}</h2>

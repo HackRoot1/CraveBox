@@ -31,11 +31,22 @@ class FoodsController extends Controller
     {
         if (isset($filterValue)) {
             $foodish = DB::table('foods')->where('category', $filterValue)->paginate(12);
+            $foodCount = DB::table('foods')->where('category', $filterValue)->count();
         } else {
             $foodish = DB::table('foods')->paginate(12);
+            $foodCount = DB::table('foods')->count();
         }
-        $foodCount = DB::table('foods')->count();
-        $foods_category = DB::table('foods')->distinct()->pluck('category');
+
+        $foods_category = DB::table('foods as t1')
+            ->select('t1.category', 't1.image')
+            ->whereIn('t1.id', function ($query) {
+                $query->select(DB::raw('MIN(id)'))
+                    ->from('foods as t2')
+                    ->whereRaw('t1.category = t2.category')
+                    ->groupBy('t2.category');
+            })
+            ->get();
+
         return view('food-page', ['foodish' => $foodish, 'foodCount' => $foodCount, 'foods_category' => $foods_category]);
     }
 
@@ -149,5 +160,4 @@ class FoodsController extends Controller
         $orders = DB::table('orders')->join('foods', 'orders.food_id', 'foods.id')->get();
         return view('checkout-page', ['orders' => $orders, 'key' => $key]);
     }
-
 }
