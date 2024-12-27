@@ -239,7 +239,7 @@
                                             <h5><a href="{{ route('single.food', $food->id) }}">{{ $food->name }}</a>
                                             </h5>
                                             <p>{{ $food->ingredient }}</p>
-                                            <span>price :₹{{ $food->price }}</span>
+                                            <span>price :₹{{ ($food->price*(100 - $food->discount_price))/100 }}</span>
                                         </div>
                                     </div>
                                 </div>
