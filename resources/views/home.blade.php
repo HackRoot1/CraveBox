@@ -231,11 +231,15 @@
                         <div class="row row-gap-4">
                             @foreach ($foods_data as $food)
                                 <div class="col-lg-4 col-md-4">
+
                                     <div class="single-menu-item d-flex justify-content-between align-items-center h-100">
+                                        <span class="badge">{{$food->badge}}</span>
                                         <div class="menu-img">
                                             <img src="/assets/images/menu-item/{{ $food->image }}" alt="" />
                                         </div>
+
                                         <div class="menu-content">
+                                                                                 
                                             <h5><a href="{{ route('single.food', $food->id) }}">{{ $food->name }}</a>
                                             </h5>
                                             <p>{{ $food->ingredient }}</p>
@@ -308,11 +312,14 @@
                     <div class="row">
                         @foreach ($food_item as $fooddish)
                             <div class="col-xl-3 col-lg-3 col-md-6">
+                                
+
                                 <div class="single-dishes">
                                     <div class="dish-img">
                                         <img src="/assets/images/menu-item/{{ $fooddish->image }}" style="width: inherit"
                                             alt="" />
                                     </div>
+                                                                      
                                     <div class="dish-content">
                                         <h5><a href="{{ route('single.food', $fooddish->id) }}">{{ $fooddish->name }}
                                             </a>
@@ -320,7 +327,7 @@
                                         <p>{{ $fooddish->description }}</p>
                                         <span class="price">price :₹{{ $fooddish->price }}</span>
                                     </div>
-                                    <span class="badge">hot</span>
+                                    <span class="badge">{{$fooddish->badge}}</span>
                                     <div class="cart-opt">
                                         <span>
                                             <a href="{{ route('add.wishlist', $fooddish->id) }}"><i
