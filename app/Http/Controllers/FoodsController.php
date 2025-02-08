@@ -14,7 +14,6 @@ class FoodsController extends Controller
     public function foodsCategory()
     {
         $foods_category = DB::table('foods')->distinct()->pluck('category');
-
         $food_data = DB::table('foods')->limit(6)->get();
         $food_item = DB::table('foods')->limit(8)->get();
         return view('home', ['foods_category' => $foods_category, 'foods_data' => $food_data, 'food_item' => $food_item]);
@@ -46,7 +45,6 @@ class FoodsController extends Controller
                     ->groupBy('t2.category');
             })
             ->get();
-
         return view('food-page', ['foodish' => $foodish, 'foodCount' => $foodCount, 'foods_category' => $foods_category]);
     }
 
